@@ -36,4 +36,15 @@ app.post("/list", async (req, res) => {
   }
 });
 
+app.get("/list", async (req, res) => {
+  try {
+    const resp = await connection.query(`SELECT * FROM list`);
+
+    res.send(resp.rows);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+});
+
 export default app;
